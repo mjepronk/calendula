@@ -1,0 +1,81 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: a40e7ec9ac62e383d31ec3c680bb23943893e7fe4c7d488275e75494052d9c04
+
+name:           calendula
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/mjepronk/calendula#readme>
+homepage:       https://github.com/mjepronk/calendula#readme
+bug-reports:    https://github.com/mjepronk/calendula/issues
+author:         Matthias Pronk
+maintainer:     matthias@remakingthe.world
+copyright:      2020 Matthias Pronk
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/mjepronk/calendula
+
+library
+  exposed-modules:
+      Calendar
+      Holidays
+      ICalendar
+      Run
+      Types
+      Weeks
+  other-modules:
+      Paths_calendula
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.11 && <10
+    , time
+    , cryptonite
+    , rio >=0.1.12.0
+  default-language: Haskell2010
+  default-extensions:
+      OverloadedStrings
+    , NoImplicitPrelude
+
+executable calendula
+  main-is: Main.hs
+  other-modules:
+      Paths_calendula
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.11 && <10
+    , calendula
+    , optparse-simple
+    , rio >=0.1.12.0
+  default-language: Haskell2010
+  default-extensions:
+      OverloadedStrings
+    , NoImplicitPrelude
+
+test-suite calendula-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_calendula
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.11 && <10
+    , calendula
+    , hspec
+    , rio >=0.1.12.0
+  default-language: Haskell2010
